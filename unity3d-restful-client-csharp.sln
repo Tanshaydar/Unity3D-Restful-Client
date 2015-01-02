@@ -1,0 +1,45 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{0929BE5D-3975-EC13-7FCE-2707618ACD12}") = "unity3d-restful-client", "Assembly-CSharp-vs.csproj", "{DD061708-1E1A-5078-5A76-FC38DEDF915B}"
+EndProject
+Project("{0929BE5D-3975-EC13-7FCE-2707618ACD12}") = "unity3d-restful-client", "Assembly-CSharp-Editor-vs.csproj", "{FAEF6458-4191-2341-FAD2-3F574A71CF8B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD061708-1E1A-5078-5A76-FC38DEDF915B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD061708-1E1A-5078-5A76-FC38DEDF915B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD061708-1E1A-5078-5A76-FC38DEDF915B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD061708-1E1A-5078-5A76-FC38DEDF915B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAEF6458-4191-2341-FAD2-3F574A71CF8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAEF6458-4191-2341-FAD2-3F574A71CF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAEF6458-4191-2341-FAD2-3F574A71CF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAEF6458-4191-2341-FAD2-3F574A71CF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+				GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+
+EndGlobal
