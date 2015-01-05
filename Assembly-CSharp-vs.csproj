@@ -183,6 +183,7 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
      <Compile Include="Assets\REST\AssemblyInfo.cs" />
      <Compile Include="Assets\REST\lib\JSON.cs" />
+     <Compile Include="Assets\REST\plugins\SimpleJSON.cs" />
      <Compile Include="Assets\REST\src\CookieJar.cs" />
      <Compile Include="Assets\REST\src\DiskCache.cs" />
      <Compile Include="Assets\REST\src\Request.cs" />
@@ -229,6 +230,9 @@
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
  <Reference Include="Ionic.Zlib">
  <HintPath>C:/Users/Tansel/Documents/unity3d-restful-client/Assets/REST/lib/Ionic.Zlib.dll</HintPath>
+ </Reference>
+ <Reference Include="ICSharpCode.SharpZipLib">
+ <HintPath>C:/Users/Tansel/Documents/unity3d-restful-client/Assets/REST/plugins/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -166,11 +166,14 @@
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
+ <Reference Include="Ionic.Zlib">
+ <HintPath>C:/Users/Tansel/Documents/unity3d-restful-client/Assets/REST/lib/Ionic.Zlib.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
- <Reference Include="Ionic.Zlib">
- <HintPath>C:/Users/Tansel/Documents/unity3d-restful-client/Assets/REST/lib/Ionic.Zlib.dll</HintPath>
+ <Reference Include="ICSharpCode.SharpZipLib">
+ <HintPath>C:/Users/Tansel/Documents/unity3d-restful-client/Assets/REST/plugins/ICSharpCode.SharpZipLib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

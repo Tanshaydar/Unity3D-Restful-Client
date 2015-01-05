@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using SimpleJSON;
 
 public class RESTful : MonoBehaviour {
 
@@ -26,7 +27,8 @@ public class RESTful : MonoBehaviour {
 	public bool checkDevice(){
 		HTTP.Request checkDevice = new HTTP.Request("get", API + "device/123sdgas64");
 		checkDevice.Send( (request) => {
-			Debug.Log(request.response.Text);
+			string result = JSON.JsonEncode( request.response.Text);
+			Debug.Log(result);
 		});
 		return false;
 	}
