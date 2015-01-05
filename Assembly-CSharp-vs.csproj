@@ -181,13 +181,15 @@
      <Compile Include="Assets\NGUI\Scripts\UI\UITexture.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UITooltip.cs" />
      <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
-     <Compile Include="Assets\RESTful\lib\JSON.cs" />
-     <Compile Include="Assets\RESTful\src\CookieJar.cs" />
-     <Compile Include="Assets\RESTful\src\DiskCache.cs" />
-     <Compile Include="Assets\RESTful\src\Request.cs" />
-     <Compile Include="Assets\RESTful\src\Response.cs" />
-     <Compile Include="Assets\RESTful\src\ResponseCallbackDispatcher.cs" />
-     <Compile Include="Assets\Scripts\RestTest.cs" />
+     <Compile Include="Assets\REST\AssemblyInfo.cs" />
+     <Compile Include="Assets\REST\lib\JSON.cs" />
+     <Compile Include="Assets\REST\src\CookieJar.cs" />
+     <Compile Include="Assets\REST\src\DiskCache.cs" />
+     <Compile Include="Assets\REST\src\Request.cs" />
+     <Compile Include="Assets\REST\src\Response.cs" />
+     <Compile Include="Assets\REST\src\ResponseCallbackDispatcher.cs" />
+     <Compile Include="Assets\Scripts\Device.cs" />
+     <Compile Include="Assets\Scripts\RESTful.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.7.7.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
@@ -226,7 +228,7 @@
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
  <Reference Include="Ionic.Zlib">
- <HintPath>C:/Users/tansel.altinel/Documents/unity3d-restful-client/Assets/RESTful/lib/Ionic.Zlib.dll</HintPath>
+ <HintPath>C:/Users/Tansel/Documents/unity3d-restful-client/Assets/REST/lib/Ionic.Zlib.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
