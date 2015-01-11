@@ -27,8 +27,8 @@ public class RESTful : MonoBehaviour {
 	public bool checkDevice(){
 		HTTP.Request checkDevice = new HTTP.Request("get", API + "device/123sdgas64");
 		checkDevice.Send( (request) => {
-			string result = JSON.JsonEncode( request.response.Text);
-			Debug.Log(result);
+            JSONObject deviceObject = new JSONObject(request.response.Text);
+			Debug.Log(deviceObject);
 		});
 		return false;
 	}
