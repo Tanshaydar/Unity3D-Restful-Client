@@ -192,8 +192,11 @@
      <Compile Include="Assets\RESTful\src\Request.cs" />
      <Compile Include="Assets\RESTful\src\Response.cs" />
      <Compile Include="Assets\RESTful\src\ResponseCallbackDispatcher.cs" />
+     <Compile Include="Assets\Scripts\AyarlarButonu.cs" />
      <Compile Include="Assets\Scripts\Device.cs" />
+     <Compile Include="Assets\Scripts\GeneralController.cs" />
      <Compile Include="Assets\Scripts\RESTful.cs" />
+     <Compile Include="Assets\Scripts\ServerInfo.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.7.7.txt" />
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text 2.shader" />
