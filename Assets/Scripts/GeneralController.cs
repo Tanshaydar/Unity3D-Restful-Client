@@ -8,11 +8,16 @@ public class GeneralController : MonoBehaviour
 
     public UILabel connectionResult;
 
-    private RESTful rest = new RESTful();
+    public RESTful rest;
 
     // Use this for initialization
     void Start()
     {
+        Debug.Log("Started...");
+        Invoke("checkSteps", 2f);
+    }
+
+    private void checkSteps() {
         if (checkInternetConnection("http://www.google.com"))
         {
             if (checkServerConnection(ServerInfo.serverURL))
@@ -60,7 +65,7 @@ public class GeneralController : MonoBehaviour
 
     private bool checkDeviceRegistration()
     {
-        if (rest.checkDevice(ServerInfo.device.getUniqueId()))
+        if (rest.checkDevice())
         {
             connectionResult.text = "Cihaz Durumu: [99ff00]Cihaz Kayıtlı![-]";
             return true;

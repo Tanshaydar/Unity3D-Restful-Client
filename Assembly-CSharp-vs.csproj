@@ -195,6 +195,7 @@
      <Compile Include="Assets\Scripts\AyarlarButonu.cs" />
      <Compile Include="Assets\Scripts\Device.cs" />
      <Compile Include="Assets\Scripts\GeneralController.cs" />
+     <Compile Include="Assets\Scripts\GirisKontrolu.cs" />
      <Compile Include="Assets\Scripts\RESTful.cs" />
      <Compile Include="Assets\Scripts\ServerInfo.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />

@@ -1,21 +1,38 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections;
 using SimpleJSON;
 
-public class RESTful
+public class RESTful : MonoBehaviour 
 {
 
-    public RESTful() { }
+    private JSONObject deviceObject = null;
 
-    public bool checkDevice(string uniqueId)
+    void Start() {
+        StartCoroutine(check());
+    }
+
+    public bool checkDevice()
     {
-        JSONObject deviceObject;
-        //HTTP.Request checkDevice = new HTTP.Request("get", ServerInfo.serverURL + ServerInfo.API + ServerInfo.deviceApi + "123sdgas64");
-        HTTP.Request checkDevice = new HTTP.Request("get", ServerInfo.serverURL + ServerInfo.API + ServerInfo.deviceApi + uniqueId);
-        checkDevice.Send((request) =>
+        if (deviceObject.ToString().Equals("false"))
         {
-            deviceObject = new JSONObject(request.response.Text);
-            Debug.Log(deviceObject);
-        });
-        return false;
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
+    public IEnumerator check() {
+        HTTP.Request checkDevice = new HTTP.Request("get", ServerInfo.serverURL + ServerInfo.API + ServerInfo.deviceApi + ServerInfo.device.getUniqueId());
+        checkDevice.Send();
+
+        while (!checkDevice.isDone)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        deviceObject = new JSONObject(checkDevice.response.Text);        
     }
 }
