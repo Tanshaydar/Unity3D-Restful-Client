@@ -7,22 +7,28 @@ public class GeneralController : MonoBehaviour
 {
 
     public UILabel connectionResult;
+    public UILabel connectionResult2;
 
-    public RESTful rest;
+    private RESTful rest;
 
-    // Use this for initialization
+    void Awake()
+    {
+        rest = GameObject.FindObjectOfType<RESTful>();
+    }
+
     void Start()
     {
         Debug.Log("Started...");
         Invoke("checkSteps", 2f);
     }
 
-    private void checkSteps() {
+    public void checkSteps()
+    {
         if (checkInternetConnection("http://www.google.com"))
         {
             if (checkServerConnection(ServerInfo.serverURL))
             {
-                checkDeviceRegistration();
+                Invoke("checkDeviceRegistration", 2);
             }
         }
     }
@@ -33,16 +39,19 @@ public class GeneralController : MonoBehaviour
         if (HtmlText == "")
         {
             connectionResult.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
+            connectionResult2.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
             return false;
         }
         else if (!HtmlText.Contains("schema.org/WebPage"))
         {
             connectionResult.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
+            connectionResult2.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
             return false;
         }
         else
         {
             connectionResult.text = "Cihaz Durumu: [99ff00]İnternet Bağlantısı Mevcut![-]";
+            connectionResult2.text = "Cihaz Durumu: [99ff00]İnternet Bağlantısı Mevcut![-]";
             return true;
         }
     }
@@ -54,27 +63,42 @@ public class GeneralController : MonoBehaviour
         if (HtmlText == "")
         {
             connectionResult.text = "Cihaz Durumu: [ff0000]Sunucuya bağlanılamıyor![-]";
+            connectionResult2.text = "Cihaz Durumu: [ff0000]Sunucuya bağlanılamıyor![-]";
             return false;
         }
         else
         {
             connectionResult.text = "Cihaz Durumu: [99ff00]Sunucu Bağlantısı Mevcut![-]";
+            connectionResult2.text = "Cihaz Durumu: [99ff00]Sunucu Bağlantısı Mevcut![-]";
             return true;
         }
     }
 
     private bool checkDeviceRegistration()
     {
-        if (rest.checkDevice())
+        if (rest.checkDevice() == 1)
         {
             connectionResult.text = "Cihaz Durumu: [99ff00]Cihaz Kayıtlı![-]";
+            connectionResult2.text = "Cihaz Durumu: [99ff00]Cihaz Kayıtlı![-]";
             return true;
+        }
+        else if (rest.checkDevice() == 0)
+        {
+            connectionResult.text = "Cihaz Durumu: [ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
+            connectionResult2.text = "Cihaz Durumu: [ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
+            return false;
+        }
+        else if (rest.checkDevice() == -1)
+        {
+            connectionResult.text = "Cihaz Durumu: [ff0000]Veritabanı hatası![-]";
+            connectionResult2.text = "Cihaz Durumu: [ff0000]Veritabanı hatası![-]";
+            return false;
         }
         else
         {
-            connectionResult.text = "Cihaz Durumu: [ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
             return false;
         }
+
     }
 
     public string GetHtmlFromUri(string resource)

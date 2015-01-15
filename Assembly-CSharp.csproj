@@ -192,7 +192,8 @@
      <Compile Include="Assets\RESTful\src\Request.cs" />
      <Compile Include="Assets\RESTful\src\Response.cs" />
      <Compile Include="Assets\RESTful\src\ResponseCallbackDispatcher.cs" />
-     <Compile Include="Assets\Scripts\AyarlarButonu.cs" />
+     <Compile Include="Assets\Scripts\Ayarlar.cs" />
+     <Compile Include="Assets\Scripts\Back.cs" />
      <Compile Include="Assets\Scripts\Device.cs" />
      <Compile Include="Assets\Scripts\GeneralController.cs" />
      <Compile Include="Assets\Scripts\GirisKontrolu.cs" />
