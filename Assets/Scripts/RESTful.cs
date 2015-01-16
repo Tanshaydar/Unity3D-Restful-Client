@@ -8,7 +8,7 @@ public class RESTful : MonoBehaviour
 
     private JSONObject deviceObject = null;
 
-    public Ayarlar ayarlar;
+    private Ayarlar ayarlar;
     private GeneralController controller;
 
     void Awake()

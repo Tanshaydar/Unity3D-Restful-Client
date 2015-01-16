@@ -10,6 +10,8 @@ public class Back : MonoBehaviour
     public GameObject sifreEkrani;
     public GameObject ayarButonu;
 
+    public GirisKontrolu girisKontrolu;
+
     public void back() {
         settingsScreen.SetActive(false);
         mainScreen.SetActive(true);
@@ -17,6 +19,7 @@ public class Back : MonoBehaviour
         ustKisim.SetActive(true);
         sifreEkrani.SetActive(false);
         ayarButonu.SetActive(true);
+        girisKontrolu.Geri();
     }
 
 }

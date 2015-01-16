@@ -8,6 +8,7 @@ public class GirisKontrolu : MonoBehaviour {
     public UIInput password;
     public UILabel passwordText;
     public UILabel girisButonu;
+    public UILabel ayarButonuText;
 
     public GameObject ayarPaneli;
     public GameObject anaPanel;
@@ -17,20 +18,35 @@ public class GirisKontrolu : MonoBehaviour {
 
     private Ayarlar ayarlar;
 
+    private bool inSettings = false;
+
     void Awake() {
         ayarlar = GameObject.FindObjectOfType<Ayarlar>();
     }
 
     public void OnClick()
     {
-        ustKisim.SetActive(false);
-        oyunlar.SetActive(false);
-        sifreEkrani.SetActive(true);
-        gameObject.SetActive(false);
-        userNameText.text = "Kullanıcı Adı";
-        passwordText.text = "Şifre";
-        userName.value = "";
-        password.value = "";
+        if (inSettings)
+        {
+            ustKisim.SetActive(true);
+            oyunlar.SetActive(true);
+            sifreEkrani.SetActive(false);
+            ayarButonuText.text = "Ayarlar";
+            inSettings = !inSettings;
+        }
+        else
+        {
+            ustKisim.SetActive(false);
+            oyunlar.SetActive(false);
+            sifreEkrani.SetActive(true);
+            ayarButonuText.text = "Geri";
+
+            userNameText.text = "Kullanıcı Adı";
+            passwordText.text = "Şifre";
+            userName.value = "";
+            password.value = "";
+            inSettings = !inSettings;
+        }
     }
 
     public void GirisiKontrolEt() {
@@ -47,5 +63,10 @@ public class GirisKontrolu : MonoBehaviour {
 
     public void GeriAl() {
         girisButonu.text = "Giriş Yap";
+    }
+
+    public void Geri() {
+        inSettings = !inSettings;
+        ayarButonuText.text = "Ayarlar";
     }
 }
