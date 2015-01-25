@@ -1,135 +1,57 @@
 ﻿using UnityEngine;
 using System;
-using System.IO;
-using System.Net;
 
-public class GeneralController : MonoBehaviour
-{
+public class GeneralController : MonoBehaviour {
 
-    public UILabel connectionResult;
-    public UILabel connectionResult2;
+    private DateTime baslangic;
+    private DateTime bitis;
 
-    private RESTful rest;
+    private HataController hata;
 
-    void Awake()
-    {
-        rest = GameObject.FindObjectOfType<RESTful>();
-    }
-
-    void Start()
-    {
-        Debug.Log("Started...");
-        Invoke("checkSteps", 2f);
-    }
-
-    public void checkSteps()
-    {
-        if (checkInternetConnection("http://www.google.com"))
+    void Awake() {
+        DontDestroyOnLoad(gameObject);
+        baslangic = new DateTime();
+        bitis = new DateTime();
+        hata = GameObject.FindObjectOfType<HataController>();
+        if (PlayerPrefs.HasKey("baslangicSaat") && PlayerPrefs.HasKey("baslangicDakika") && PlayerPrefs.HasKey("bitisSaat") && PlayerPrefs.HasKey("bitisDakika"))
         {
-            if (checkServerConnection(ServerInfo.serverURL))
-            {
-                Invoke("checkDeviceRegistration", 2);
-            }
+            baslangic = new DateTime(baslangic.Year, baslangic.Month, baslangic.Day, PlayerPrefs.GetInt("baslangicSaat"), PlayerPrefs.GetInt("baslangicDakika"), 00);
+            bitis = new DateTime(bitis.Year, bitis.Month, bitis.Day, PlayerPrefs.GetInt("bitisSaat"), PlayerPrefs.GetInt("bitisDakika"), 00);
         }
     }
 
-    private bool checkInternetConnection(string uri)
-    {
-        string HtmlText = GetHtmlFromUri(uri);
-        if (HtmlText == "")
-        {
-            connectionResult.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
-            return false;
-        }
-        else if (!HtmlText.Contains("schema.org/WebPage"))
-        {
-            connectionResult.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
-            return false;
-        }
-        else
-        {
-            connectionResult.text = "Cihaz Durumu: [99ff00]İnternet Bağlantısı Mevcut![-]";
-            connectionResult2.text = "Cihaz Durumu: [99ff00]İnternet Bağlantısı Mevcut![-]";
+	void FixedUpdate () {
+	}
+
+    public bool checkTime() {
+        if ((baslangic.TimeOfDay <= DateTime.Now.TimeOfDay) && (bitis.TimeOfDay >= DateTime.Now.TimeOfDay))
             return true;
-        }
-    }
-
-    private bool checkServerConnection(string uri)
-    {
-        string HtmlText = GetHtmlFromUri(uri);
-        Debug.Log(HtmlText);
-        if (HtmlText == "")
-        {
-            connectionResult.text = "Cihaz Durumu: [ff0000]Sunucuya bağlanılamıyor![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]Sunucuya bağlanılamıyor![-]";
-            return false;
-        }
         else
+            return false;
+    }
+
+    public void startMemoryGame() {
+        if (checkTime())
         {
-            connectionResult.text = "Cihaz Durumu: [99ff00]Sunucu Bağlantısı Mevcut![-]";
-            connectionResult2.text = "Cihaz Durumu: [99ff00]Sunucu Bağlantısı Mevcut![-]";
-            return true;
+            Application.LoadLevel(1);
+        }
+        else {
+            showError();
         }
     }
 
-    private bool checkDeviceRegistration()
-    {
-        if (rest.checkDevice() == 1)
-        {
-            connectionResult.text = "Cihaz Durumu: [99ff00]Cihaz Kayıtlı![-]";
-            connectionResult2.text = "Cihaz Durumu: [99ff00]Cihaz Kayıtlı![-]";
-            return true;
-        }
-        else if (rest.checkDevice() == 0)
-        {
-            connectionResult.text = "Cihaz Durumu: [ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
-            return false;
-        }
-        else if (rest.checkDevice() == -1)
-        {
-            connectionResult.text = "Cihaz Durumu: [ff0000]Veritabanı hatası![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]Veritabanı hatası![-]";
-            return false;
-        }
-        else
-        {
-            return false;
-        }
-
+    public void startUnfinishedGame() {
+        hata.hataMesajiAyarla("Bu oyun henüz hazır değil.");
+        hata.hataEkraniGoster();
     }
 
-    public string GetHtmlFromUri(string resource)
-    {
-        string html = string.Empty;
-        HttpWebRequest req = (HttpWebRequest)WebRequest.Create(resource);
+    public void showError() {
+        hata.hataMesajiAyarla("Şu anda zaman çizelgesinin dışındasınız.");
+        hata.hataEkraniGoster();
+    }
 
-        try
-        {
-            using (HttpWebResponse resp = (HttpWebResponse)req.GetResponse())
-            {
-                bool isSuccess = (int)resp.StatusCode < 299 && (int)resp.StatusCode >= 200;
-                if (isSuccess)
-                {
-                    using (StreamReader reader = new StreamReader(resp.GetResponseStream()))
-                    {
-                        char[] cs = new char[80];
-                        reader.Read(cs, 0, cs.Length);
-                        foreach (char ch in cs)
-                        {
-                            html += ch;
-                        }
-                    }
-                }
-            }
-        }
-        catch
-        {
-            return "";
-        }
-
-        return html;
+    public void saatleriAyarla(DateTime baslangic, DateTime bitis) {
+        this.baslangic = baslangic;
+        this.bitis = bitis;
     }
 }

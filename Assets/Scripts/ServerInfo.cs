@@ -4,17 +4,10 @@ using System.Collections;
 public class ServerInfo
 {
 
-    public static string serverURL = "http://localhost/zaman";
+    public static string serverURL = "http://192.168.1.2/zaman";
     public static string API = "api";
     public static string deviceApi = "device";
+    public static string zamanApi = "zaman";
 
     public static Device device = new Device();
-
-    void Awake()
-    {
-        if (!PlayerPrefs.HasKey("lol"))
-        {
-            Debug.Log("first time yey!");
-        }
-    }
 }

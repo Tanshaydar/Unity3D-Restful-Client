@@ -7,6 +7,7 @@ public class RESTful : MonoBehaviour
 {
 
     private JSONObject deviceObject = null;
+    private JSONObject zamanObject = null;
 
     private Ayarlar ayarlar;
     private GeneralController controller;
@@ -62,6 +63,36 @@ public class RESTful : MonoBehaviour
         }
 
         deviceObject = new JSONObject(checkDevice.response.Text);
+
+        if (deviceObject[2].ToString().Contains("EVET"))
+        {
+            Debug.Log("Ozel ayarlar VAR");
+            DateTime baslangicSaati = DateTime.Parse(deviceObject[3].ToString().Trim('"'));
+            DateTime bitisSaati = DateTime.Parse(deviceObject[4].ToString().Trim('"'));
+            Debug.Log("****************************************************************");
+            Debug.Log("Başlangıc: " + baslangicSaati + "  | Bitis: " + bitisSaati);
+            Debug.Log("****************************************************************");
+            controller.saatleriAyarla(baslangicSaati, bitisSaati);
+        }
+        else {
+            Debug.Log("Ozel ayarlar YOK");
+            getGeneralTimeSettings();
+        }
+    }
+
+    public void getGeneralTimeSettings() {
+        HTTP.Request checkTime = new HTTP.Request("get", ServerInfo.serverURL + "/"
+            + ServerInfo.API + "/"
+            + ServerInfo.zamanApi);
+        checkTime.Send((request) => {
+            zamanObject = new JSONObject(checkTime.response.Text);
+            DateTime baslangicSaati = DateTime.Parse(zamanObject[1].ToString().Trim('"'));
+            DateTime bitisSaati = DateTime.Parse(zamanObject[2].ToString().Trim('"'));
+            Debug.Log("****************************************************************");
+            Debug.Log("Başlangıc: " + baslangicSaati + "  | Bitis: " + bitisSaati);
+            Debug.Log("****************************************************************");
+            controller.saatleriAyarla(baslangicSaati, bitisSaati);
+        });
     }
 
     public void registerDevice()

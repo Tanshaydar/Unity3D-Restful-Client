@@ -3,13 +3,13 @@ using System.Collections;
 
 public class Ayarlar : MonoBehaviour {
 
-    private GeneralController controller;
+    private GameController controller;
     private RESTful rest;
     public GameObject kaydetButonu;
     public UILabel kaydetButonuText;
 
     void Awake() {
-        controller = GameObject.FindObjectOfType<GeneralController>();
+        controller = GameObject.FindObjectOfType<GameController>();
         rest = GameObject.FindObjectOfType<RESTful>();
     }
 
@@ -40,4 +40,5 @@ public class Ayarlar : MonoBehaviour {
     private void checkAgain(){
         controller.checkSteps();
     }
+
 }

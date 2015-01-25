@@ -49,6 +49,9 @@
      <Compile Include="Assets\JSON\JSONObject.cs" />
      <Compile Include="Assets\JSON\JSONTemplates.cs" />
      <Compile Include="Assets\JSON\VectorTemplates.cs" />
+     <Compile Include="Assets\MemoryGame\Scripts\Debugger.cs" />
+     <Compile Include="Assets\MemoryGame\Scripts\GameManager.cs" />
+     <Compile Include="Assets\MemoryGame\Scripts\Pad.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipItems.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\EquipRandomItem.cs" />
      <Compile Include="Assets\NGUI\Examples\Scripts\InventorySystem\Game\UICursor.cs" />
@@ -195,9 +198,12 @@
      <Compile Include="Assets\Scripts\Ayarlar.cs" />
      <Compile Include="Assets\Scripts\Back.cs" />
      <Compile Include="Assets\Scripts\Device.cs" />
+     <Compile Include="Assets\Scripts\GameController.cs" />
      <Compile Include="Assets\Scripts\GeneralController.cs" />
      <Compile Include="Assets\Scripts\GirisKontrolu.cs" />
+     <Compile Include="Assets\Scripts\HataController.cs" />
      <Compile Include="Assets\Scripts\RESTful.cs" />
+     <Compile Include="Assets\Scripts\SaatDakikaDogrula.cs" />
      <Compile Include="Assets\Scripts\ServerInfo.cs" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth Cutout.shader" />
      <None Include="Assets\NGUI\ReadMe - 3.7.7.txt" />
@@ -234,6 +240,7 @@
      <None Include="Assets\NGUI\Resources\Shaders\Unlit - Text (TextureClip).shader" />
      <None Include="Assets\NGUI\Examples\Shaders\Unlit - Depth.shader" />
      <None Include="Assets\NGUI\Examples\Atlases\SciFi\SciFi Font - Normal.txt" />
+     <None Include="Assets\MemoryGame\Scripts\READ ME.txt" />
      <None Include="Assets\NGUI\Examples\Models\Orc Armor\Orc Armor.shader" />
      <None Include="Assets\NGUI\Examples\Resources\Localization.txt" />
      <None Include="Assets\JSON\readme.txt" />
