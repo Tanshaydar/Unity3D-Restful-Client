@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour {
     private float startTime, endTime;
     private int matches = 0, moves = 0;
 
+    public Texture buttonImage;
+
     public GUISkin memoSkin;
     public GameObject tile, background;
     public Texture[] resimler;
@@ -187,10 +189,17 @@ public class GameManager : MonoBehaviour {
         if (GUI.skin != memoSkin)
             GUI.skin = memoSkin;
 
+        if (GUI.Button(new Rect(5, Screen.height - 101, 96, 96), buttonImage))
+        {
+            Application.LoadLevel(0);
+        }
+
         // Show message the the memory game is solved and time 
         if (solved)
         {
-            GUI.Box(new Rect((Screen.width / 2) - 100, (Screen.height / 2) - 15, 200, 30), "Solved!");
+            if (GUI.Button(new Rect((Screen.width / 2) - 200, (Screen.height / 2) - 50, 400, 100), "Tebrikler!")) {
+                Application.LoadLevel(0);
+            }
             GUI.Label(new Rect(10, 10, 90, 30), "Zaman");
             GUI.Label(new Rect(100, 10, 200, 30), FinalTime());
         }
