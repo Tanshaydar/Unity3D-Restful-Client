@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+
 using System.Collections;
 using System.Collections.Generic;
 
@@ -16,9 +17,43 @@ public class GameManager : MonoBehaviour {
 
     public GUISkin memoSkin;
     public GameObject tile, background;
-    public Texture[] images;
+    public Texture[] resimler;
+    private Texture[] images;
     public float spacing, pause;
     public int horizontal, vertical;
+
+    void Awake()
+    {
+        // Random generator
+        // Number of sprites to be used in the game TODO: selectable at the beginning
+        int n = 6;
+        // Number of sprites at total, this should be 64 as assigned
+        int range = resimler.Length;
+        // images will be used as a new Texture array in game
+        images = new Texture[n];
+
+        int[] result = new int[n];
+        int[] all = new int[range];
+        for (int i = 0; i < all.Length; ++i)
+            all[i] = i;
+
+        for (int i = 0; i < all.Length; ++i)
+        {
+            int r = UnityEngine.Random.Range(i, range);
+            int tmp = all[r];
+            all[r] = all[i];
+            all[i] = tmp;
+        }
+
+        for (int i = 0; i < n; ++i)
+            result[i] = all[i];
+
+        // Finally assign randomly selected sprites to the images array so that they will be used
+        for (int i = 0; i < result.Length; i++) {
+            images[i] = resimler[result[i]];
+            Debug.Log(result[i]);
+        }
+    }
 
 	void Start () {
         // Check if the product of horizontal and vertical variables is even number. If not, stop.

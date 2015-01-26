@@ -32,6 +32,7 @@ public class GameController : MonoBehaviour
 
     public void checkSteps()
     {
+        Debug.Log(Application.internetReachability);
         if (checkInternetConnection("http://www.google.com"))
         {
             if (checkServerConnection(ServerInfo.serverURL))
@@ -46,20 +47,20 @@ public class GameController : MonoBehaviour
         string HtmlText = GetHtmlFromUri(uri);
         if (HtmlText == "")
         {
-            connectionResult.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
+            connectionResult.text = "Cihaz Durumu:\n[ff0000]İnternet Bağlantısı Yok![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[ff0000]İnternet Bağlantısı Yok![-]";
             return false;
         }
         else if (!HtmlText.Contains("schema.org/WebPage"))
         {
-            connectionResult.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]İnternet Bağlantısı Yok![-]";
+            connectionResult.text = "Cihaz Durumu:\n[ff0000]İnternet Bağlantısı Yok![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[ff0000]İnternet Bağlantısı Yok![-]";
             return false;
         }
         else
         {
-            connectionResult.text = "Cihaz Durumu: [99ff00]İnternet Bağlantısı Mevcut![-]";
-            connectionResult2.text = "Cihaz Durumu: [99ff00]İnternet Bağlantısı Mevcut![-]";
+            connectionResult.text = "Cihaz Durumu:\n[99ff00]İnternet Bağlantısı Mevcut![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[99ff00]İnternet Bağlantısı Mevcut![-]";
             return true;
         }
     }
@@ -70,14 +71,14 @@ public class GameController : MonoBehaviour
         Debug.Log(HtmlText);
         if (HtmlText == "")
         {
-            connectionResult.text = "Cihaz Durumu: [ff0000]Sunucuya bağlanılamıyor![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]Sunucuya bağlanılamıyor![-]";
+            connectionResult.text = "Cihaz Durumu:\n[ff0000]Sunucuya bağlanılamıyor![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[ff0000]Sunucuya bağlanılamıyor![-]";
             return false;
         }
         else
         {
-            connectionResult.text = "Cihaz Durumu: [99ff00]Sunucu Bağlantısı Mevcut![-]";
-            connectionResult2.text = "Cihaz Durumu: [99ff00]Sunucu Bağlantısı Mevcut![-]";
+            connectionResult.text = "Cihaz Durumu:\n[99ff00]Sunucu Bağlantısı Mevcut![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[99ff00]Sunucu Bağlantısı Mevcut![-]";
             return true;
         }
     }
@@ -86,20 +87,20 @@ public class GameController : MonoBehaviour
     {
         if (rest.checkDevice() == 1)
         {
-            connectionResult.text = "Cihaz Durumu: [99ff00]Cihaz Kayıtlı![-]";
-            connectionResult2.text = "Cihaz Durumu: [99ff00]Cihaz Kayıtlı![-]";
+            connectionResult.text = "Cihaz Durumu:\n[99ff00]Cihaz Kayıtlı![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[99ff00]Cihaz Kayıtlı![-]";
             return true;
         }
         else if (rest.checkDevice() == 0)
         {
-            connectionResult.text = "Cihaz Durumu: [ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
+            connectionResult.text = "Cihaz Durumu:\n[ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[ff0000]Cihaz Sisteme Kayıtlı Değil![-]";
             return false;
         }
         else if (rest.checkDevice() == -1)
         {
-            connectionResult.text = "Cihaz Durumu: [ff0000]Veritabanı hatası![-]";
-            connectionResult2.text = "Cihaz Durumu: [ff0000]Veritabanı hatası![-]";
+            connectionResult.text = "Cihaz Durumu:\n[ff0000]Veritabanı hatası![-]";
+            connectionResult2.text = "Cihaz Durumu:\n[ff0000]Veritabanı hatası![-]";
             return false;
         }
         else
